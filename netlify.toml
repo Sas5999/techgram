@@ -1,0 +1,17 @@
+# Netlify monorepo configuration for Techgram Next.js Web App
+
+[build]
+  base = "apps/web"
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  # Next.js build optimization
+  NEXT_USE_SWC = "true"
+
+[[redirects]]
+  # Route all API requests to the external NestJS API server
+  # The user should configure NEXT_PUBLIC_API_URL in their Netlify dashboard
+  from = "/api/v1/*"
+  to = ":env(NEXT_PUBLIC_API_URL)/api/v1/:splat"
+  status = 200

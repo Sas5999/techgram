@@ -1,0 +1,179 @@
+datasource db {
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  extensions = [vector]
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+enum CredibilityRating {
+  OFFICIAL_SOURCE
+  TRUSTED_MEDIA
+  COMMUNITY_SOURCE
+  UNVERIFIED
+}
+
+enum SubscriptionTier {
+  FREE
+  PREMIUM
+  FOUNDER
+  INVESTOR
+  ENTERPRISE
+}
+
+enum EnrichmentStatus {
+  PENDING
+  PROCESSING
+  COMPLETE
+  FAILED
+}
+
+model User {
+  id                 String             @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email              String             @unique
+  emailVerified      Boolean            @default(false)
+  emailVerifyToken   String?
+  passwordHash       String?
+  fullName           String
+  avatarUrl          String?
+  tier               SubscriptionTier   @default(FREE)
+  passwordResetToken String?
+  passwordResetExpires DateTime?
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+  
+  preferences        UserPreference?
+  subscriptions      Subscription[]
+  interactions       StoryInteraction[]
+  collections        Collection[]
+
+  @@map("users")
+}
+
+model UserPreference {
+  userId               String   @id @db.Uuid
+  followedCategories   String[] @default([])
+  followedCompanies    String[] @default([])
+  followedTechnologies String[] @default([])
+  founderModeEnabled   Boolean  @default(false)
+  notificationsEnabled Boolean  @default(true)
+  notificationFilters  String[] @default(["BREAKING_AI", "FUNDING"])
+  
+  user                 User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_preferences")
+}
+
+model Subscription {
+  id                 String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId             String           @db.Uuid
+  tier               SubscriptionTier
+  status             String           @default("inactive")
+  stripeCustomerId   String?
+  stripeSubId        String?
+  currentPeriodStart DateTime?
+  currentPeriodEnd   DateTime?
+  cancelledAt        DateTime?
+  createdAt          DateTime         @default(now())
+  
+  user               User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("subscriptions")
+}
+
+model Story {
+  id                 String            @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  headline           String
+  slug               String            @unique
+  coverImageUrl      String?
+  category           String
+  sourceName         String
+  sourceDomain       String
+  sourceLogoUrl      String?
+  authorName         String?
+  originalUrl        String            @unique
+  publishedAt        DateTime
+  credibility        CredibilityRating @default(UNVERIFIED)
+  enrichmentStatus   EnrichmentStatus  @default(PENDING)
+  enrichmentError    String?
+  enrichmentAttempts Int               @default(0)
+
+  // Excerpts & Content
+  quickSummary       String?
+  detailedSummary    String?
+  deepAnalysis       String?
+  whyItMatters       Json?
+  whatHappensNext    String?
+
+  // Scores
+  aiImpactScore      Int?
+  marketImpactScore  Int?
+  innovationScore    Int?
+  businessImpactScore Int?
+  viralityScore      Int?
+
+  // Metadata tags
+  companyTags        String[]          @default([])
+  techTags           String[]          @default([])
+  founderTags        String[]          @default([])
+
+  // Embeddings for semantic search (1536 dimensions, nullable)
+  embedding          Unsupported("vector(1536)")?
+
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+  
+  interactions       StoryInteraction[]
+  collections        Collection[]      @relation("CollectionStories")
+  pulseUpdates       PulseUpdate[]
+
+  @@index([publishedAt(sort: Desc)])
+  @@index([category])
+  @@index([enrichmentStatus])
+  @@map("stories")
+}
+
+model StoryInteraction {
+  id                    String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId                String   @db.Uuid
+  storyId               String   @db.Uuid
+  liked                 Boolean  @default(false)
+  saved                 Boolean  @default(false)
+  viewedDurationSeconds Int      @default(0)
+  createdAt             DateTime @default(now())
+  
+  user                  User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  story                 Story    @relation(fields: [storyId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, storyId])
+  @@map("story_interactions")
+}
+
+model Collection {
+  id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId     String   @db.Uuid
+  name       String
+  isPrivate  Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  stories    Story[]  @relation("CollectionStories")
+
+  @@map("collections")
+}
+
+model PulseUpdate {
+  id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title      String
+  storyRefId String?  @db.Uuid
+  category   String
+  createdAt  DateTime @default(now())
+  
+  story      Story?   @relation(fields: [storyRefId], references: [id], onDelete: SetNull)
+
+  @@index([createdAt(sort: Desc)])
+  @@map("pulse_updates")
+}
