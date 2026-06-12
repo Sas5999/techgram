@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
 @theme {
   --color-background: #030303;
@@ -28,10 +27,13 @@
 html {
   height: 100%;
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
 }
 
 body {
   min-height: 100%;
+  overscroll-behavior-y: none;
   display: flex;
   flex-direction: column;
   overflow-x: hidden;

@@ -291,7 +291,7 @@ export default function StoryCard({ story, direction = 'up', onSwipeUp, onSwipeD
         </div>
 
         {/* Impact scores */}
-        <div className="grid grid-cols-5 bg-white/4 border border-white/8 rounded-2xl p-3.5">
+        <div className="grid grid-cols-3 gap-3 sm:grid-cols-5 bg-white/4 border border-white/8 rounded-2xl p-3.5">
           <RadialScore score={story.aiImpactScore} label="AI" colorClass="text-accent-purple glow-ring-purple" />
           <RadialScore score={story.marketImpactScore} label="Market" colorClass="text-accent-blue glow-ring-blue" />
           <RadialScore score={story.innovationScore} label="Innov" colorClass="text-accent-emerald glow-ring-emerald" />
@@ -315,14 +315,15 @@ export default function StoryCard({ story, direction = 'up', onSwipeUp, onSwipeD
 
         <div className="flex items-center gap-2">
           {[
-            { active: isLiked, toggle: () => toggleLike(story.id), Icon: Heart, activeClass: 'bg-accent-purple/15 border-accent-purple/30 text-accent-purple', fill: isLiked },
-            { active: isSaved, toggle: () => toggleSave(story.id), Icon: Bookmark, activeClass: 'bg-accent-emerald/15 border-accent-emerald/30 text-accent-emerald', fill: isSaved },
-            { active: false, toggle: handleShare, Icon: Share2, activeClass: 'bg-white/6 border-white/10 text-gray-300', fill: false },
-          ].map(({ active, toggle, Icon, activeClass, fill }, i) => (
+            { active: isLiked, toggle: () => toggleLike(story.id), Icon: Heart, activeClass: 'bg-accent-purple/15 border-accent-purple/30 text-accent-purple', fill: isLiked, label: isLiked ? 'Unlike story' : 'Like story' },
+            { active: isSaved, toggle: () => toggleSave(story.id), Icon: Bookmark, activeClass: 'bg-accent-emerald/15 border-accent-emerald/30 text-accent-emerald', fill: isSaved, label: isSaved ? 'Remove save' : 'Save story' },
+            { active: false, toggle: handleShare, Icon: Share2, activeClass: 'bg-white/6 border-white/10 text-gray-300', fill: false, label: 'Share story' },
+          ].map(({ active, toggle, Icon, activeClass, fill, label }, i) => (
             <motion.button
               key={i}
               whileTap={{ scale: 0.92 }}
               onClick={(e) => { e.stopPropagation(); toggle(); }}
+              aria-label={label}
               className={`w-12 h-12 rounded-3xl border transition-colors duration-200 flex items-center justify-center ${
                 active ? activeClass : 'bg-white/5 border-white/10 hover:bg-white/10 hover:text-white'
               }`}
