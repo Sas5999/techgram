@@ -12,6 +12,12 @@ jest.mock('framer-motion', () => {
           {children}
         </div>
       )),
+      circle: React.forwardRef(({ ...props }: any, ref: any) => (
+        <circle ref={ref} {...props} />
+      )),
+      button: React.forwardRef(({ children, ...props }: any, ref: any) => (
+        <button ref={ref} {...props}>{children}</button>
+      )),
     },
     AnimatePresence: ({ children }: any) => <>{children}</>,
   };
@@ -84,7 +90,7 @@ describe('StoryCard Component', () => {
 
   it('clicking the 30s tab displays key facts bullet points', () => {
     render(<StoryCard {...defaultProps} />);
-    const thirtySecTab = screen.getByText('30s Key Facts');
+    const thirtySecTab = screen.getByText('Key Facts');
     fireEvent.click(thirtySecTab);
     expect(screen.getByText('Launch occurred at sunrise from Boca Chica.')).toBeInTheDocument();
     expect(screen.getByText('Super Heavy booster was caught by mechanised arms.')).toBeInTheDocument();
@@ -92,7 +98,7 @@ describe('StoryCard Component', () => {
 
   it('clicking the 2m tab displays deep analysis paragraph', () => {
     render(<StoryCard {...defaultProps} />);
-    const twoMinTab = screen.getByText('2m Deep Analysis');
+    const twoMinTab = screen.getByText('Deep Dive');
     fireEvent.click(twoMinTab);
     expect(screen.getByText(/rapid reuse of the Super Heavy booster/i)).toBeInTheDocument();
   });

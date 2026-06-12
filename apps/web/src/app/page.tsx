@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useStore } from '../store/useStore';
 import { useSocket } from '../hooks/useSocket';
 import Sidebar from '../components/Sidebar';
@@ -9,7 +10,15 @@ import PulseTicker from '../components/PulseTicker';
 import StoryCard, { StoryType } from '../components/StoryCard';
 import SearchConsole from '../components/SearchConsole';
 import AnalyticsDashboard from '../components/AnalyticsDashboard';
-import { Layers, Sparkles, Activity } from 'lucide-react';
+import AnimatedBackground from '../components/AnimatedBackground';
+import MobileHeader from '../components/MobileHeader';
+import { Sparkles, ChevronUp, ChevronDown } from 'lucide-react';
+
+const pageVariants = {
+  initial: { opacity: 0, y: 12 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -8 },
+};
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<'feed' | 'search' | 'analytics'>('feed');
@@ -19,8 +28,8 @@ export default function Home() {
   const [stories, setStories] = useState<StoryType[]>([]);
   const [activeStoryIndex, setActiveStoryIndex] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [swipeDirection, setSwipeDirection] = useState<'up' | 'down'>('up');
 
-  // Load feed stories from API
   const fetchFeed = () => {
     setLoading(true);
     const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
@@ -30,7 +39,6 @@ export default function Home() {
         if (data && Array.isArray(data.stories) && data.stories.length > 0) {
           setStories(data.stories);
         } else {
-          // Fallback mock stories if database is empty
           setStories(MOCK_STORIES);
         }
         setActiveStoryIndex(0);
@@ -49,13 +57,15 @@ export default function Home() {
 
   const handleSwipeUp = () => {
     if (activeStoryIndex < stories.length - 1) {
+      setSwipeDirection('up');
       setActiveStoryIndex((prev) => prev + 1);
     }
   };
 
   const handleSwipeDown = () => {
     if (activeStoryIndex > 0) {
-      setActiveStoryIndex((prev) => prev - 0.999 ? prev - 1 : 0);
+      setSwipeDirection('down');
+      setActiveStoryIndex((prev) => prev - 1);
     }
   };
 
@@ -65,88 +75,153 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden bg-[#030303] text-white">
-      {/* Live Marquee Ticker */}
-      <PulseTicker />
+    <div className="flex flex-col h-screen overflow-hidden bg-background text-white relative">
+      <AnimatedBackground />
 
-      {/* Main Layout Area */}
-      <div className="flex flex-1 overflow-hidden relative">
-        {/* Left Collapsible Sidebar (Desktop) */}
-        <Sidebar onTabChange={setActiveTab} currentTab={activeTab} />
+      <div className="relative z-10 flex flex-col h-full">
+        <MobileHeader activeTab={activeTab} feedFilter={feedFilter} />
+        <PulseTicker />
 
-        {/* Center Canvas */}
-        <main className="flex-1 flex flex-col relative items-center justify-center p-4 pb-20 md:pb-6 overflow-hidden">
-          {activeTab === 'feed' && (
-            <div className="w-full max-w-[440px] h-[calc(100vh-140px)] flex flex-col items-center justify-center relative">
-              {/* Live stories notification banner */}
-              {newStoriesCount > 0 && (
-                <button
-                  onClick={handleRefreshNewStories}
-                  className="absolute top-4 z-30 animate-bounce cursor-pointer glass-card btn-neon-purple px-5 py-3 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-2 hover:scale-105 transition-transform"
+        <div className="flex flex-1 overflow-hidden relative">
+          <Sidebar onTabChange={setActiveTab} currentTab={activeTab} />
+
+          <main className="flex-1 flex flex-col relative items-center justify-center p-4 pb-20 md:pb-6 overflow-hidden">
+            <AnimatePresence mode="wait">
+              {activeTab === 'feed' && (
+                <motion.div
+                  key="feed"
+                  variants={pageVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  className="w-full max-w-[440px] h-[calc(100vh-140px)] md:h-[calc(100vh-120px)] flex flex-col items-center justify-center relative"
                 >
-                  <Sparkles className="w-4 h-4" />
-                  <span>{newStoriesCount} New Stories Available</span>
-                </button>
+                  {newStoriesCount > 0 && (
+                    <motion.button
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      onClick={handleRefreshNewStories}
+                      className="absolute top-2 z-30 cursor-pointer glass-card btn-neon-purple px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider flex items-center gap-2"
+                    >
+                      <Sparkles className="w-3.5 h-3.5" />
+                      <span>{newStoriesCount} new {newStoriesCount === 1 ? 'story' : 'stories'}</span>
+                    </motion.button>
+                  )}
+
+                  {loading ? (
+                    <div className="w-full h-full rounded-3xl shimmer border border-white/5 flex flex-col items-center justify-center gap-5">
+                      <div className="relative w-10 h-10">
+                        <div className="absolute inset-0 rounded-full border-2 border-transparent border-t-accent-blue border-r-accent-purple animate-spin" />
+                      </div>
+                      <span className="text-xs font-medium text-gray-500 tracking-wide">Loading intelligence feed…</span>
+                    </div>
+                  ) : stories.length > 0 ? (
+                    <div className="w-full h-full relative flex flex-col gap-3">
+                      {/* Story progress */}
+                      <div className="flex items-center justify-center gap-1.5 shrink-0">
+                        {stories.map((_, i) => (
+                          <div
+                            key={i}
+                            className={`story-dot ${i === activeStoryIndex ? 'active' : i < activeStoryIndex ? 'done' : ''}`}
+                          />
+                        ))}
+                      </div>
+
+                      <div className="flex-1 relative min-h-0">
+                        <AnimatePresence mode="wait" custom={swipeDirection}>
+                          <StoryCard
+                            key={stories[activeStoryIndex].id}
+                            story={stories[activeStoryIndex]}
+                            direction={swipeDirection}
+                            onSwipeUp={handleSwipeUp}
+                            onSwipeDown={handleSwipeDown}
+                            onSwipeLeft={() => {}}
+                          />
+                        </AnimatePresence>
+
+                        {/* Desktop nav controls */}
+                        <div className="hidden lg:flex flex-col gap-2 absolute -right-14 top-1/2 -translate-y-1/2">
+                          <motion.button
+                            whileHover={{ scale: 1.08 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={handleSwipeDown}
+                            disabled={activeStoryIndex === 0}
+                            className="w-10 h-10 rounded-full border border-white/8 bg-white/5 hover:bg-white/10 text-white disabled:opacity-25 disabled:pointer-events-none flex items-center justify-center transition-colors"
+                            aria-label="Previous story"
+                          >
+                            <ChevronUp className="w-4 h-4" />
+                          </motion.button>
+                          <motion.button
+                            whileHover={{ scale: 1.08 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={handleSwipeUp}
+                            disabled={activeStoryIndex === stories.length - 1}
+                            className="w-10 h-10 rounded-full border border-white/8 bg-white/5 hover:bg-white/10 text-white disabled:opacity-25 disabled:pointer-events-none flex items-center justify-center transition-colors"
+                            aria-label="Next story"
+                          >
+                            <ChevronDown className="w-4 h-4" />
+                          </motion.button>
+                        </div>
+                      </div>
+
+                      {/* Swipe hint */}
+                      {activeStoryIndex === 0 && stories.length > 1 && (
+                        <motion.p
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: 1.2 }}
+                          className="text-center text-[10px] text-gray-500 font-medium tracking-wide swipe-hint shrink-0"
+                        >
+                          Swipe up for next story · Double-tap to like
+                        </motion.p>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="text-gray-500 text-sm text-center px-6">
+                      Feed is empty. Scrapers are running…
+                    </div>
+                  )}
+                </motion.div>
               )}
 
-              {loading ? (
-                <div className="flex flex-col items-center justify-center gap-4">
-                  <div className="relative w-12 h-12">
-                    <div className="absolute inset-0 rounded-full border-2 border-transparent border-t-accent-blue border-r-accent-purple animate-spin" />
-                    <div className="absolute inset-2 rounded-full border border-accent-emerald/30 animate-pulse" />
-                  </div>
-                  <span className="text-xs font-medium text-gray-400 tracking-wide">Tuning into technology intelligence...</span>
-                </div>
-              ) : stories.length > 0 ? (
-                <div className="w-full h-full relative">
-                  <StoryCard 
-                    story={stories[activeStoryIndex]} 
-                    onSwipeUp={handleSwipeUp}
-                    onSwipeDown={handleSwipeDown}
-                    onSwipeLeft={() => {
-                      alert('Related Stories drawer swipe: Loaded semantically similar feeds!');
-                    }}
-                  />
-                  
-                  {/* Slide controls display for desktop click assistance */}
-                  <div className="hidden lg:flex flex-col gap-2 absolute -right-16 top-1/2 -translate-y-1/2">
-                    <button 
-                      onClick={handleSwipeDown}
-                      disabled={activeStoryIndex === 0}
-                      className="w-10 h-10 rounded-full border border-white/5 bg-white/5 hover:bg-white/10 text-white disabled:opacity-30 disabled:pointer-events-none flex items-center justify-center text-sm"
-                    >
-                      ▲
-                    </button>
-                    <button 
-                      onClick={handleSwipeUp}
-                      disabled={activeStoryIndex === stories.length - 1}
-                      className="w-10 h-10 rounded-full border border-white/5 bg-white/5 hover:bg-white/10 text-white disabled:opacity-30 disabled:pointer-events-none flex items-center justify-center text-sm"
-                    >
-                      ▼
-                    </button>
-                  </div>
-                </div>
-              ) : (
-                <div className="text-gray-500 text-sm text-center">
-                  Feed is currently empty. Scrapers are running...
-                </div>
+              {activeTab === 'search' && (
+                <motion.div
+                  key="search"
+                  variants={pageVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  className="w-full h-full"
+                >
+                  <SearchConsole />
+                </motion.div>
               )}
-            </div>
-          )}
 
-          {activeTab === 'search' && <SearchConsole />}
+              {activeTab === 'analytics' && (
+                <motion.div
+                  key="analytics"
+                  variants={pageVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  className="w-full h-full"
+                >
+                  <AnalyticsDashboard />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </main>
 
-          {activeTab === 'analytics' && <AnalyticsDashboard />}
-        </main>
-
-        {/* Bottom Nav Bar (Mobile) */}
-        <BottomBar onTabChange={setActiveTab} currentTab={activeTab} />
+          <BottomBar onTabChange={setActiveTab} currentTab={activeTab} />
+        </div>
       </div>
     </div>
   );
 }
 
-// Global High-Fidelity Fallback Mock Data for instant demonstration
 const MOCK_STORIES: StoryType[] = [
   {
     id: 'mock-1',

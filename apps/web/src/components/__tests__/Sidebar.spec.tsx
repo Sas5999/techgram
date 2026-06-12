@@ -2,7 +2,21 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Sidebar from '../Sidebar';
 
-// Mock Zustand Store
+jest.mock('framer-motion', () => {
+  const React = require('react');
+  return {
+    motion: {
+      div: React.forwardRef(({ children, ...props }: any, ref: any) => (
+        <div ref={ref} {...props}>{children}</div>
+      )),
+      button: React.forwardRef(({ children, ...props }: any, ref: any) => (
+        <button ref={ref} {...props}>{children}</button>
+      )),
+    },
+    AnimatePresence: ({ children }: any) => <>{children}</>,
+  };
+});
+
 const mockSetFeedFilter = jest.fn();
 const mockSetUser = jest.fn();
 const mockLogout = jest.fn();
@@ -29,13 +43,13 @@ describe('Sidebar Component', () => {
 
   it('renders the brand title and logo', () => {
     render(<Sidebar {...defaultProps} />);
-    expect(screen.getByText('TECHGRAM')).toBeInTheDocument();
+    expect(screen.getByText('Techgram')).toBeInTheDocument();
   });
 
   it('displays menu items for feed categories', () => {
     render(<Sidebar {...defaultProps} />);
     expect(screen.getByText('Latest Feed')).toBeInTheDocument();
-    expect(screen.getByText('Trending Feed')).toBeInTheDocument();
+    expect(screen.getByText('Trending')).toBeInTheDocument();
     expect(screen.getByText('Founder Mode')).toBeInTheDocument();
     expect(screen.getByText('Disruptions')).toBeInTheDocument();
   });
