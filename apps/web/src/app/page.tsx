@@ -82,7 +82,7 @@ export default function Home() {
               {newStoriesCount > 0 && (
                 <button
                   onClick={handleRefreshNewStories}
-                  className="absolute top-4 bg-gradient-to-r from-accent-purple to-accent-blue text-white text-xs font-bold px-4 py-2 rounded-full border border-accent-purple/30 shadow-lg hover:shadow-accent-purple/40 transition-all duration-300 flex items-center gap-1.5 z-30 animate-bounce cursor-pointer"
+                  className="absolute top-4 z-30 animate-bounce cursor-pointer glass-card btn-neon-purple px-5 py-3 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-2 hover:scale-105 transition-transform"
                 >
                   <Sparkles className="w-4 h-4" />
                   <span>{newStoriesCount} New Stories Available</span>
@@ -90,9 +90,12 @@ export default function Home() {
               )}
 
               {loading ? (
-                <div className="flex flex-col items-center justify-center gap-3">
-                  <div className="w-8 h-8 rounded-full border-2 border-accent-purple border-t-transparent animate-spin" />
-                  <span className="text-xs text-gray-400">Tuning into technology intelligence...</span>
+                <div className="flex flex-col items-center justify-center gap-4">
+                  <div className="relative w-12 h-12">
+                    <div className="absolute inset-0 rounded-full border-2 border-transparent border-t-accent-blue border-r-accent-purple animate-spin" />
+                    <div className="absolute inset-2 rounded-full border border-accent-emerald/30 animate-pulse" />
+                  </div>
+                  <span className="text-xs font-medium text-gray-400 tracking-wide">Tuning into technology intelligence...</span>
                 </div>
               ) : stories.length > 0 ? (
                 <div className="w-full h-full relative">

@@ -127,7 +127,7 @@ export default function StoryCard({ story, onSwipeUp, onSwipeDown, onSwipeLeft }
         }
       }}
       onClick={handleTap}
-      className="w-full h-full relative overflow-hidden rounded-3xl border border-white/5 bg-black flex flex-col justify-between shadow-[0_12px_40px_rgba(0,0,0,0.8)] cursor-grab active:cursor-grabbing select-none"
+      className="w-full h-full relative overflow-hidden rounded-3xl border border-white/8 bg-black/80 backdrop-blur-xl flex flex-col justify-between shadow-[0_20px_60px_rgba(0,210,255,0.1),0_0_40px_rgba(0,0,0,0.8)] cursor-grab active:cursor-grabbing select-none hover:shadow-[0_25px_80px_rgba(157,0,255,0.15),0_0_60px_rgba(0,0,0,0.9)] transition-shadow duration-500"
     >
       {/* Background Cover Image with Gradients */}
       <div className="absolute inset-0 z-0">
@@ -184,16 +184,16 @@ export default function StoryCard({ story, onSwipeUp, onSwipeDown, onSwipeLeft }
       <div className="px-6 flex-1 flex flex-col justify-end gap-5 pb-6 relative z-10">
         {/* Category & Tags */}
         <div className="flex flex-wrap gap-2">
-          <span className="text-[10px] font-extrabold uppercase bg-accent-purple/20 text-accent-purple border border-accent-purple/30 px-2 py-0.5 rounded-md tracking-wider">
+          <span className="text-[10px] font-extrabold uppercase bg-gradient-to-r from-accent-purple/30 to-accent-purple/10 text-accent-purple border border-accent-purple/40 px-2.5 py-1 rounded-lg tracking-wider shadow-[0_0_12px_rgba(157,0,255,0.2)]">
             {story.category.replace('_', ' ')}
           </span>
           {story.companyTags.slice(0, 2).map(tag => (
-            <span key={tag} className="text-[10px] font-semibold bg-white/5 border border-white/10 text-gray-300 px-2 py-0.5 rounded-md">
+            <span key={tag} className="text-[10px] font-semibold bg-gradient-to-r from-white/10 to-white/5 border border-white/15 text-gray-300 px-2.5 py-1 rounded-lg hover:border-white/25 transition-all">
               #{tag}
             </span>
           ))}
           {story.techTags.slice(0, 2).map(tag => (
-            <span key={tag} className="text-[10px] font-semibold bg-white/5 border border-white/10 text-gray-300 px-2 py-0.5 rounded-md">
+            <span key={tag} className="text-[10px] font-semibold bg-gradient-to-r from-white/10 to-white/5 border border-white/15 text-gray-300 px-2.5 py-1 rounded-lg hover:border-white/25 transition-all">
               {tag}
             </span>
           ))}
@@ -205,7 +205,7 @@ export default function StoryCard({ story, onSwipeUp, onSwipeDown, onSwipeLeft }
         </h2>
 
         {/* Tiered Summaries Navigation Tabs */}
-        <div className="flex border-b border-white/5">
+        <div className="flex border-b border-white/10 gap-1 bg-white/3 rounded-t-lg p-1">
           {(['15s', '30s', '2m'] as const).map((tab) => (
             <button
               key={tab}
@@ -213,10 +213,10 @@ export default function StoryCard({ story, onSwipeUp, onSwipeDown, onSwipeLeft }
                 e.stopPropagation();
                 setActiveTab(tab);
               }}
-              className={`flex-1 py-2 text-center text-xs font-bold uppercase tracking-wider border-b-2 transition-all ${
+              className={`flex-1 py-2.5 text-center text-xs font-bold uppercase tracking-wider rounded-lg transition-all duration-300 ${
                 activeTab === tab 
-                  ? 'border-accent-purple text-white bg-white/5' 
-                  : 'border-transparent text-gray-400 hover:text-white'
+                  ? 'bg-gradient-to-r from-accent-purple/40 to-accent-purple/20 text-white border border-accent-purple/40 shadow-[0_0_12px_rgba(157,0,255,0.25)]' 
+                  : 'text-gray-400 hover:text-white hover:bg-white/5 border border-transparent'
               }`}
             >
               {tab === '15s' ? '15s Excerpt' : tab === '30s' ? '30s Key Facts' : '2m Deep Analysis'}
@@ -258,7 +258,7 @@ export default function StoryCard({ story, onSwipeUp, onSwipeDown, onSwipeLeft }
         </div>
 
         {/* Intelligence Engine Scores */}
-        <div className="grid grid-cols-5 bg-white/5 border border-white/5 rounded-2xl p-3 select-none">
+        <div className="grid grid-cols-5 bg-gradient-to-br from-white/8 to-white/2 border border-white/10 rounded-2xl p-4 select-none backdrop-blur-sm shadow-[0_8px_24px_rgba(0,0,0,0.3)]">
           <RadialScore score={story.aiImpactScore} label="AI" colorClass="text-accent-purple glow-ring-purple" />
           <RadialScore score={story.marketImpactScore} label="Market" colorClass="text-accent-blue glow-ring-blue" />
           <RadialScore score={story.innovationScore} label="Inno" colorClass="text-accent-emerald glow-ring-emerald" />
@@ -268,13 +268,13 @@ export default function StoryCard({ story, onSwipeUp, onSwipeDown, onSwipeLeft }
       </div>
 
       {/* Bottom Tray: Actions */}
-      <div className="p-6 border-t border-white/5 bg-black/20 flex items-center justify-between relative z-10">
+      <div className="p-6 border-t border-white/10 bg-gradient-to-t from-black/80 to-black/40 flex items-center justify-between relative z-10 backdrop-blur-sm">
         <a 
           href={story.originalUrl}
           target="_blank"
           rel="noopener noreferrer"
           onClick={(e) => e.stopPropagation()}
-          className="flex items-center gap-2 text-xs font-bold text-accent-blue hover:text-white transition uppercase tracking-wider bg-accent-blue/10 border border-accent-blue/30 px-4 py-2.5 rounded-xl"
+          className="btn-neon-blue flex items-center gap-2 text-xs font-bold text-accent-blue uppercase tracking-wider px-4 py-2.5 rounded-xl transition-all duration-300"
         >
           <span>Source Link</span>
           <ExternalLink className="w-4 h-4" />
@@ -286,13 +286,13 @@ export default function StoryCard({ story, onSwipeUp, onSwipeDown, onSwipeLeft }
               e.stopPropagation();
               toggleLike(story.id);
             }}
-            className={`p-3 rounded-xl border transition ${
+            className={`p-3 rounded-xl border transition-all duration-300 ${
               isLiked 
-                ? 'bg-accent-purple/10 border-accent-purple/40 text-accent-purple' 
-                : 'bg-white/5 border-white/10 text-gray-400 hover:text-white'
+                ? 'bg-accent-purple/15 border-accent-purple/50 text-accent-purple shadow-[0_0_15px_rgba(157,0,255,0.3)]' 
+                : 'bg-white/5 border-white/15 text-gray-400 hover:text-accent-purple hover:border-accent-purple/40 hover:shadow-[0_0_12px_rgba(157,0,255,0.2)]'
             }`}
           >
-            <Heart className={`w-5 h-5 ${isLiked ? 'fill-accent-purple' : ''}`} />
+            <Heart className={`w-5 h-5 transition-all ${isLiked ? 'fill-accent-purple' : ''}`} />
           </button>
 
           <button 
@@ -300,13 +300,13 @@ export default function StoryCard({ story, onSwipeUp, onSwipeDown, onSwipeLeft }
               e.stopPropagation();
               toggleSave(story.id);
             }}
-            className={`p-3 rounded-xl border transition ${
+            className={`p-3 rounded-xl border transition-all duration-300 ${
               isSaved 
-                ? 'bg-accent-emerald/10 border-accent-emerald/40 text-accent-emerald' 
-                : 'bg-white/5 border-white/10 text-gray-400 hover:text-white'
+                ? 'bg-accent-emerald/15 border-accent-emerald/50 text-accent-emerald shadow-[0_0_15px_rgba(0,255,135,0.3)]' 
+                : 'bg-white/5 border-white/15 text-gray-400 hover:text-accent-emerald hover:border-accent-emerald/40 hover:shadow-[0_0_12px_rgba(0,255,135,0.2)]'
             }`}
           >
-            <Bookmark className={`w-5 h-5 ${isSaved ? 'fill-accent-emerald' : ''}`} />
+            <Bookmark className={`w-5 h-5 transition-all ${isSaved ? 'fill-accent-emerald' : ''}`} />
           </button>
 
           <button 
@@ -314,7 +314,7 @@ export default function StoryCard({ story, onSwipeUp, onSwipeDown, onSwipeLeft }
               e.stopPropagation();
               handleShare();
             }}
-            className="p-3 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-white transition"
+            className="p-3 rounded-xl border border-white/15 bg-white/5 text-gray-400 hover:text-accent-blue hover:border-accent-blue/40 hover:shadow-[0_0_12px_rgba(0,210,255,0.2)] transition-all duration-300"
           >
             <Share2 className="w-5 h-5" />
           </button>
