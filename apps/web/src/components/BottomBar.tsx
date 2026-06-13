@@ -61,21 +61,31 @@ export default function BottomBar({ onTabChange, currentTab }: BottomBarProps) {
       {tabs.map((tab) => (
         <motion.button
           key={tab.id}
-          whileTap={{ scale: 0.92 }}
+          whileTap={{ scale: 0.85 }}
           onClick={tab.action}
-          className={`relative flex flex-col items-center justify-center gap-1 w-16 h-16 rounded-3xl transition-all duration-200 ${
+          className={`elastic-pop ripple-container relative flex flex-col items-center justify-center gap-1 w-16 h-16 rounded-3xl transition-all duration-200 ${
             tab.active ? 'text-accent-emerald bg-white/10' : 'text-gray-500 hover:text-white hover:bg-white/10'
           }`}
         >
           <motion.div
-            animate={tab.active ? { scale: 1.1, y: -1 } : { scale: 1, y: 0 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 22 }}
+            animate={tab.active ? { scale: [1, 1.3, 1.1], y: -2 } : { scale: 1, y: 0 }}
+            transition={{ type: 'spring', stiffness: 500, damping: 18 }}
           >
             <tab.icon className={`w-5 h-5 ${tab.active ? 'stroke-[2.5px]' : 'stroke-[1.8px]'}`} />
           </motion.div>
-          <span className={`text-[9px] uppercase tracking-widest ${tab.active ? 'font-bold' : 'font-medium'}`}>
+          <motion.span
+            animate={tab.active ? { opacity: 1, y: 0 } : { opacity: 0.7, y: 1 }}
+            className={`text-[9px] uppercase tracking-widest ${tab.active ? 'font-bold' : 'font-medium'}`}
+          >
             {tab.name}
-          </span>
+          </motion.span>
+          {tab.active && (
+            <motion.div
+              layoutId="bottom-bar-glow"
+              className="absolute -bottom-0.5 w-6 h-1 rounded-full bg-accent-emerald/60 blur-sm"
+              transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+            />
+          )}
         </motion.button>
       ))}
     </nav>

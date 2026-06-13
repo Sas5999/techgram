@@ -74,10 +74,10 @@ export default function Sidebar({ onTabChange, currentTab }: SidebarProps) {
             className="flex flex-col gap-1"
           >
             <div className="flex items-center gap-2">
-              <span className="text-lg font-extrabold tracking-tight bg-gradient-to-r from-accent-purple via-accent-blue to-accent-emerald bg-clip-text text-transparent">
+              <span className="text-lg font-extrabold tracking-tight bg-gradient-to-r from-accent-purple via-accent-blue to-accent-emerald bg-clip-text text-transparent gradient-shimmer-text">
                 Techgram
               </span>
-              <span className="text-[8px] font-bold text-accent-blue border border-accent-blue/25 px-2 py-0.5 rounded-full uppercase tracking-widest">
+              <span className="text-[8px] font-bold text-accent-blue border border-accent-blue/25 px-2 py-0.5 rounded-full uppercase tracking-widest float-badge">
                 Beta
               </span>
             </div>
@@ -87,10 +87,10 @@ export default function Sidebar({ onTabChange, currentTab }: SidebarProps) {
           </motion.div>
         )}
         <motion.button
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ scale: 1.05, rotate: isCollapsed ? 180 : 0 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="p-2 rounded-2xl border border-white/10 bg-white/5 text-gray-400 hover:text-white transition-colors"
+          className="p-2 rounded-2xl border border-white/10 bg-white/5 text-gray-400 hover:text-white transition-colors ripple-container"
           aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
         >
           {isCollapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
@@ -115,7 +115,7 @@ export default function Sidebar({ onTabChange, currentTab }: SidebarProps) {
                 if ('tab' in item) onTabChange(item.tab);
                 else { setFeedFilter(item.filter); onTabChange('feed'); }
               }}
-              className={`relative w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-medium transition-all duration-200 ${
+              className={`group relative w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-medium transition-all duration-200 glow-hover ${
                 isActive
                   ? 'text-white bg-gradient-to-r from-white/10 to-white/5 border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.12)]'
                   : 'text-gray-400 hover:text-white hover:bg-white/5'
@@ -128,8 +128,18 @@ export default function Sidebar({ onTabChange, currentTab }: SidebarProps) {
                   transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                 />
               )}
-              <item.icon className={`w-5 h-5 shrink-0 relative z-10 ${isActive ? item.color : 'text-gray-400'}`} />
+              <motion.div
+                whileHover={{ rotate: [0, -8, 8, 0] }}
+                transition={{ duration: 0.4 }}
+              >
+                <item.icon className={`w-5 h-5 shrink-0 relative z-10 ${isActive ? item.color : 'text-gray-400'}`} />
+              </motion.div>
               {!isCollapsed && <span className="relative z-10 text-left">{item.name}</span>}
+              {isCollapsed && (
+                <span className="tooltip-fade absolute left-full ml-3 px-2.5 py-1.5 bg-black/90 border border-white/10 rounded-lg text-[10px] font-semibold text-white whitespace-nowrap z-50 shadow-lg">
+                  {item.name}
+                </span>
+              )}
             </motion.button>
           );
         })}

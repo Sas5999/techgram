@@ -62,9 +62,9 @@ export default function SearchConsole() {
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 0.1 }}
-        className="relative mb-8"
+        className="relative mb-8 neon-pulse-focus rounded-[1.25rem]"
       >
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 z-10" />
         <input
           type="text"
           value={query}
@@ -95,10 +95,10 @@ export default function SearchConsole() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.25 + i * 0.05 }}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
+                whileHover={{ scale: 1.06, y: -2 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => setQuery(search)}
-                className="pill-chip text-[11px] font-semibold text-gray-300 hover:bg-white/10 hover:text-white transition-colors"
+                className="pill-chip shine-sweep text-[11px] font-semibold text-gray-300 hover:bg-white/10 hover:text-white transition-colors"
               >
                 {search}
               </motion.button>
@@ -116,8 +116,9 @@ export default function SearchConsole() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.3, delay: i * 0.05 }}
+              whileHover={{ scale: 1.02, y: -2 }}
               layout
-              className="glass-card rounded-2xl p-4 flex flex-col gap-2.5"
+              className="glass-card shine-sweep rounded-2xl p-4 flex flex-col gap-2.5"
             >
               <div className="flex items-center justify-between">
                 <span className="text-[9px] font-bold uppercase bg-accent-purple/15 text-accent-purple px-2 py-0.5 rounded">

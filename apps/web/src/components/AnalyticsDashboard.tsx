@@ -111,11 +111,16 @@ export default function AnalyticsDashboard() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.08, duration: 0.4 }}
-            className="glass-panel p-5 rounded-2xl border border-white/5 flex items-center gap-4"
+            whileHover={{ scale: 1.03, y: -4 }}
+            className="glass-panel shine-sweep p-5 rounded-2xl border border-white/5 flex items-center gap-4 cursor-default"
           >
-            <div className={`p-2.5 border rounded-xl ${card.iconClass}`}>
+            <motion.div
+              className={`p-2.5 border rounded-xl ${card.iconClass}`}
+              whileHover={{ rotate: [0, -10, 10, 0] }}
+              transition={{ duration: 0.4 }}
+            >
               <card.icon className="w-5 h-5" />
-            </div>
+            </motion.div>
             <div>
               <p className="text-[10px] uppercase tracking-widest text-gray-500 font-semibold">{card.label}</p>
               <p className="text-xl font-bold text-white mt-0.5">
@@ -178,16 +183,20 @@ export default function AnalyticsDashboard() {
               initial={{ opacity: 0, scale: 0.97 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.4 + i * 0.08 }}
-              whileHover={{ scale: 1.02 }}
-              className="glass-card p-4 rounded-xl flex items-center justify-between"
+              whileHover={{ scale: 1.04, y: -3 }}
+              whileTap={{ scale: 0.98 }}
+              className="glass-card shine-sweep p-4 rounded-xl flex items-center justify-between cursor-default"
             >
               <div>
                 <h5 className="text-sm font-semibold text-white">{trend.name}</h5>
                 <p className="text-xs text-gray-500 mt-0.5">{trend.activeCount} active reports</p>
               </div>
-              <span className="text-xs font-bold text-accent-emerald bg-accent-emerald/10 border border-accent-emerald/25 px-2.5 py-1 rounded-lg">
+              <motion.span
+                whileHover={{ scale: 1.1 }}
+                className="text-xs font-bold text-accent-emerald bg-accent-emerald/10 border border-accent-emerald/25 px-2.5 py-1 rounded-lg"
+              >
                 +{trend.growth}%
-              </span>
+              </motion.span>
             </motion.div>
           ))}
         </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heart, Bookmark, Share2, ExternalLink, Calendar, ShieldCheck } from 'lucide-react';
 import { useStore } from '../store/useStore';
@@ -42,9 +42,27 @@ interface StoryCardProps {
 const TAB_LABELS = { '15s': 'Quick Read', '30s': 'Key Facts', '2m': 'Deep Dive' } as const;
 
 const slideVariants = {
-  enter: (dir: 'up' | 'down') => ({ y: dir === 'up' ? 60 : -60, opacity: 0, scale: 0.97 }),
-  center: { y: 0, opacity: 1, scale: 1 },
-  exit: (dir: 'up' | 'down') => ({ y: dir === 'up' ? -60 : 60, opacity: 0, scale: 0.97 }),
+  enter: (dir: 'up' | 'down') => ({
+    y: dir === 'up' ? 500 : -500,
+    opacity: 0,
+    scale: 0.92,
+    rotateX: dir === 'up' ? 15 : -15,
+    z: -80,
+  }),
+  center: {
+    y: 0,
+    opacity: 1,
+    scale: 1,
+    rotateX: 0,
+    z: 0,
+  },
+  exit: (dir: 'up' | 'down') => ({
+    y: dir === 'up' ? -500 : 500,
+    opacity: 0,
+    scale: 0.92,
+    rotateX: dir === 'up' ? -15 : 15,
+    z: -80,
+  }),
 };
 
 const CRED_CONFIG: Record<string, { label: string; color: string }> = {
@@ -87,6 +105,31 @@ export default function StoryCard({ story, direction = 'up', onSwipeUp, onSwipeD
   const [activeTab, setActiveTab] = useState<'15s' | '30s' | '2m'>('15s');
   const [showHeartSplash, setShowHeartSplash] = useState(false);
   const lastTapRef = useRef<number>(0);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [shinePos, setShinePos] = useState({ x: 50, y: 50 });
+  const [coverOffset, setCoverOffset] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    const tiltX = (y - 0.5) * 8;  // max 4deg tilt
+    const tiltY = (x - 0.5) * -8;
+    setTilt({ x: tiltX, y: tiltY });
+    setShinePos({ x: x * 100, y: y * 100 });
+    setCoverOffset({ x: (x - 0.5) * -10, y: (y - 0.5) * -10 });
+  }, []);
+
+  const handleMouseEnter = useCallback(() => setIsHovering(true), []);
+  const handleMouseLeave = useCallback(() => {
+    setIsHovering(false);
+    setTilt({ x: 0, y: 0 });
+    setShinePos({ x: 50, y: 50 });
+    setCoverOffset({ x: 0, y: 0 });
+  }, []);
 
   const isLiked = likedStories.includes(story.id);
   const isSaved = savedStories.includes(story.id);
@@ -118,10 +161,18 @@ export default function StoryCard({ story, direction = 'up', onSwipeUp, onSwipeD
 
   return (
     <motion.div
+      ref={cardRef}
       custom={direction}
       variants={slideVariants}
-      initial="enter" animate="center" exit="exit"
-      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+      initial="enter"
+      animate="center"
+      exit="exit"
+      transition={{
+        type: 'spring',
+        stiffness: 260,
+        damping: 26,
+        mass: 0.75,
+      }}
       drag="y"
       dragConstraints={{ top: 0, bottom: 0 }}
       dragElastic={0.35}
@@ -130,11 +181,32 @@ export default function StoryCard({ story, direction = 'up', onSwipeUp, onSwipeD
         else if (offset.y > 80) onSwipeDown();
       }}
       onClick={handleTap}
-      className="w-full h-full relative overflow-hidden rounded-3xl border border-white/8 bg-black/70 backdrop-blur-xl flex flex-col shadow-[0_20px_60px_rgba(0,0,0,0.5)] cursor-grab active:cursor-grabbing select-none"
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        transformStyle: 'preserve-3d',
+        transform: isHovering ? `perspective(800px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)` : undefined,
+        transition: isHovering ? 'transform 0.1s ease-out' : 'transform 0.4s ease-out',
+      }}
+      className="magnetic-card w-full h-full relative overflow-hidden rounded-3xl border border-white/8 bg-black/70 backdrop-blur-xl flex flex-col shadow-[0_20px_60px_rgba(0,0,0,0.5)] cursor-grab active:cursor-grabbing select-none"
     >
-      {/* Background */}
+      {/* Shine overlay */}
+      <div
+        className="card-tilt-shine"
+        style={{ '--shine-x': `${shinePos.x}%`, '--shine-y': `${shinePos.y}%` } as React.CSSProperties}
+      />
+
+      {/* Background with parallax */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <img src={story.coverImageUrl} alt="" className="w-full h-full object-cover opacity-30 brightness-[0.45]" />
+        <img
+          src={story.coverImageUrl}
+          alt=""
+          className="w-full h-full object-cover opacity-30 brightness-[0.45] parallax-cover"
+          style={{
+            transform: isHovering ? `translate(${coverOffset.x}px, ${coverOffset.y}px) scale(1.05)` : 'translate(0, 0) scale(1)',
+          }}
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#030303]/90 to-[#030303]/40" />
       </div>
 
@@ -190,11 +262,11 @@ export default function StoryCard({ story, direction = 'up', onSwipeUp, onSwipeD
 
       {/* ── Main content ── */}
       <div className="px-4 sm:px-5 flex-1 flex flex-col justify-end gap-3 sm:gap-4 pb-3 relative z-10 min-h-0 overflow-hidden">
-        {/* Tags */}
-        <div className="flex flex-wrap gap-1.5">
-          <span className="badge-pill">{story.category.replace('_', ' ')}</span>
-          {story.companyTags.slice(0, 2).map((t) => <span key={t} className="pill-chip">#{t}</span>)}
-          {story.techTags.slice(0, 2).map((t) => <span key={t} className="pill-chip">#{t}</span>)}
+        {/* Tags — staggered entrance */}
+        <div className="flex flex-wrap gap-1.5 stagger-children">
+          <span className="badge-pill shine-sweep">{story.category.replace('_', ' ')}</span>
+          {story.companyTags.slice(0, 2).map((t) => <span key={t} className="pill-chip shine-sweep">#{t}</span>)}
+          {story.techTags.slice(0, 2).map((t) => <span key={t} className="pill-chip shine-sweep">#{t}</span>)}
         </div>
 
         {/* Headline */}
@@ -264,13 +336,13 @@ export default function StoryCard({ story, direction = 'up', onSwipeUp, onSwipeD
           </AnimatePresence>
         </div>
 
-        {/* Impact scores */}
+        {/* Impact scores — hover glow */}
         <div className="grid grid-cols-5 gap-1 sm:gap-2 bg-white/4 border border-white/8 rounded-2xl p-1.5 sm:p-2">
-          <RadialScore score={story.aiImpactScore}       label="AI"     colorClass="text-accent-purple" />
-          <RadialScore score={story.marketImpactScore}   label="Market" colorClass="text-accent-blue" />
-          <RadialScore score={story.innovationScore}     label="Innov"  colorClass="text-accent-emerald" />
-          <RadialScore score={story.businessImpactScore} label="Biz"    colorClass="text-yellow-400" />
-          <RadialScore score={story.viralityScore}       label="Viral"  colorClass="text-orange-400" />
+          <div className="ring-glow"><RadialScore score={story.aiImpactScore}       label="AI"     colorClass="text-accent-purple" /></div>
+          <div className="ring-glow"><RadialScore score={story.marketImpactScore}   label="Market" colorClass="text-accent-blue" /></div>
+          <div className="ring-glow"><RadialScore score={story.innovationScore}     label="Innov"  colorClass="text-accent-emerald" /></div>
+          <div className="ring-glow"><RadialScore score={story.businessImpactScore} label="Biz"    colorClass="text-yellow-400" /></div>
+          <div className="ring-glow"><RadialScore score={story.viralityScore}       label="Viral"  colorClass="text-orange-400" /></div>
         </div>
       </div>
 
@@ -291,14 +363,20 @@ export default function StoryCard({ story, direction = 'up', onSwipeUp, onSwipeD
           {actions.map(({ active, toggle, Icon, activeClass, fill }, i) => (
             <motion.button
               key={i}
-              whileTap={{ scale: 0.92 }}
+              whileHover={{ scale: 1.1, y: -3 }}
+              whileTap={{ scale: 0.85 }}
               onClick={(e) => { e.stopPropagation(); toggle(); }}
               aria-label={i === 0 ? (active ? 'Unlike' : 'Like') : i === 1 ? (active ? 'Unsave' : 'Save') : 'Share'}
-              className={`w-11 h-11 sm:w-12 sm:h-12 rounded-2xl sm:rounded-3xl border transition-colors duration-200 flex items-center justify-center ${
+              className={`action-btn-float ripple-container w-11 h-11 sm:w-12 sm:h-12 rounded-2xl sm:rounded-3xl border transition-colors duration-200 flex items-center justify-center ${
                 active ? activeClass : 'bg-white/5 border-white/10 hover:bg-white/10 hover:text-white text-gray-400'
               }`}
             >
-              <Icon className={`w-4 h-4 sm:w-5 sm:h-5 ${fill ? 'fill-current' : ''}`} />
+              <motion.div
+                animate={active ? { rotate: [0, -12, 12, -6, 6, 0] } : {}}
+                transition={{ duration: 0.5 }}
+              >
+                <Icon className={`w-4 h-4 sm:w-5 sm:h-5 ${fill ? 'fill-current' : ''}`} />
+              </motion.div>
             </motion.button>
           ))}
         </div>
