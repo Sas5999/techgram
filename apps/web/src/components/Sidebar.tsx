@@ -29,7 +29,7 @@ export default function Sidebar({ onTabChange, currentTab }: SidebarProps) {
     { id: 'market_disruption', name: 'Disruptions', icon: ShieldAlert, filter: 'market_disruption', color: 'text-red-400' },
     { id: 'search', name: 'Search', icon: Search, tab: 'search' as const, color: 'text-yellow-400' },
     { id: 'analytics', name: 'Intelligence', icon: TrendingUp, tab: 'analytics' as const, color: 'text-accent-emerald' },
-  ];
+  ] as const;
 
   const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -101,9 +101,9 @@ export default function Sidebar({ onTabChange, currentTab }: SidebarProps) {
       <nav className="flex-1 px-2.5 py-5 space-y-2 overflow-y-auto no-scrollbar">
         {menuItems.map((item, i) => {
           const isActive =
-            (item.tab === 'search' && currentTab === 'search') ||
-            (item.tab === 'analytics' && currentTab === 'analytics') ||
-            (!item.tab && currentTab === 'feed' && item.filter === feedFilter);
+            ('tab' in item && item.tab === 'search' && currentTab === 'search') ||
+            ('tab' in item && item.tab === 'analytics' && currentTab === 'analytics') ||
+            (!('tab' in item) && currentTab === 'feed' && item.filter === feedFilter);
 
           return (
             <motion.button
@@ -112,8 +112,8 @@ export default function Sidebar({ onTabChange, currentTab }: SidebarProps) {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: i * 0.05, duration: 0.3 }}
               onClick={() => {
-                if (item.tab) onTabChange(item.tab);
-                else { setFeedFilter(item.filter!); onTabChange('feed'); }
+                if ('tab' in item) onTabChange(item.tab);
+                else { setFeedFilter(item.filter); onTabChange('feed'); }
               }}
               className={`relative w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-medium transition-all duration-200 ${
                 isActive
