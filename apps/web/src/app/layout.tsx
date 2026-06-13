@@ -5,6 +5,27 @@ export const metadata: Metadata = {
   title: "Techgram — Tech Intelligence Feed",
   description: "Swipe through curated tech news, AI insights, funding rounds, and market disruptions in seconds.",
   icons: { icon: "/favicon.ico" },
+  openGraph: {
+    title: "Techgram — Tech Intelligence Feed",
+    description: "Swipe through curated tech news, AI insights, funding rounds, and market disruptions in seconds.",
+    url: "https://techgram.netlify.app",
+    siteName: "Techgram",
+    images: [
+      {
+        url: "https://techgram.netlify.app/og-image.svg",
+        width: 1200,
+        height: 630,
+        alt: "Techgram — Tech Intelligence Feed",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Techgram — Tech Intelligence Feed",
+    description: "Swipe through curated tech news, AI insights, funding rounds, and market disruptions in seconds.",
+    images: ["https://techgram.netlify.app/og-image.svg"],
+  },
 };
 
 export default function RootLayout({
