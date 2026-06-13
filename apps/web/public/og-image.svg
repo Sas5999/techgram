@@ -1,75 +1,40 @@
-<svg width="100%" viewBox="0 0 720 390" role="img" xmlns="http://www.w3.org/2000/svg" style=""><defs><mask id="imagine-text-gaps-ztl90t" maskUnits="userSpaceOnUse"><rect x="0" y="0" width="720" height="390" fill="white"/><rect x="55.5234375" y="44.5" width="98.953125" height="19" fill="black" rx="2"/><rect x="36" y="93.5" width="276.75" height="58" fill="black" rx="2"/><rect x="36" y="149.5" width="185.2578125" height="58" fill="black" rx="2"/><rect x="36" y="220.5" width="411.46875" height="23" fill="black" rx="2"/><rect x="47.27734375" y="279.5" width="55.4453125" height="17" fill="black" rx="2"/><rect x="125.0390625" y="279.5" width="71.921875" height="17" fill="black" rx="2"/><rect x="198.60546875" y="279.5" width="106.7890625" height="17" fill="black" rx="2"/><rect x="36" y="317.5" width="132.6171875" height="19" fill="black" rx="2"/></mask></defs>
-  <title style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Techgram OG preview image</title>
-  <desc style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Open Graph social media preview card for Techgram, an AI news website</desc>
-
-  <rect width="680" height="360" rx="0" fill="#0A0E1A" style="fill:rgb(10, 14, 26);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-
-  <!-- Grid lines subtle -->
-  <line x1="0" y1="120" x2="680" y2="120" stroke="#1E2540" stroke-width="0.5" mask="url(#imagine-text-gaps-ztl90t)" style="fill:rgb(0, 0, 0);stroke:rgb(30, 37, 64);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <line x1="0" y1="240" x2="680" y2="240" stroke="#1E2540" stroke-width="0.5" mask="url(#imagine-text-gaps-ztl90t)" style="fill:rgb(0, 0, 0);stroke:rgb(30, 37, 64);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <line x1="227" y1="0" x2="227" y2="360" stroke="#1E2540" stroke-width="0.5" mask="url(#imagine-text-gaps-ztl90t)" style="fill:rgb(0, 0, 0);stroke:rgb(30, 37, 64);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <line x1="453" y1="0" x2="453" y2="360" stroke="#1E2540" stroke-width="0.5" style="fill:rgb(0, 0, 0);stroke:rgb(30, 37, 64);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-
-  <!-- Accent glow circle top-right -->
-  <circle cx="620" cy="60" r="90" fill="#185FA5" opacity="0.18" style="fill:rgb(24, 95, 165);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.18;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <circle cx="620" cy="60" r="50" fill="#378ADD" opacity="0.12" style="fill:rgb(55, 138, 221);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.12;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-
-  <!-- Accent glow circle bottom-left -->
-  <circle cx="80" cy="300" r="80" fill="#0F6E56" opacity="0.18" style="fill:rgb(15, 110, 86);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.18;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <circle cx="80" cy="300" r="40" fill="#1D9E75" opacity="0.12" style="fill:rgb(29, 158, 117);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.12;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-
-  <!-- Logo pill -->
-  <rect x="40" y="38" width="130" height="32" rx="16" fill="#185FA5" opacity="0.9" style="fill:rgb(24, 95, 165);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.9;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="105" y="59" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#E6F1FB" letter-spacing="2" style="fill:rgb(230, 241, 251);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:13px;font-weight:600;text-anchor:middle;dominant-baseline:auto">TECHGRAM</text>
-
-  <!-- Main headline -->
-  <text x="40" y="140" font-family="system-ui, sans-serif" font-size="46" font-weight="700" fill="#F0F4FF" letter-spacing="-1" style="fill:rgb(240, 244, 255);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:46px;font-weight:700;text-anchor:start;dominant-baseline:auto">The Future of</text>
-  <text x="40" y="196" font-family="system-ui, sans-serif" font-size="46" font-weight="700" fill="#378ADD" letter-spacing="-1" style="fill:rgb(55, 138, 221);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:46px;font-weight:700;text-anchor:start;dominant-baseline:auto">AI News.</text>
-
-  <!-- Subline -->
-  <text x="40" y="238" font-family="system-ui, sans-serif" font-size="16" font-weight="400" fill="#8A9AB8" style="fill:rgb(138, 154, 184);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Breaking AI stories, deep dives &amp; daily tech intelligence.</text>
-
-  <!-- Divider line -->
-  <line x1="40" y1="262" x2="320" y2="262" stroke="#1E2540" stroke-width="0.5" style="fill:rgb(0, 0, 0);stroke:rgb(30, 37, 64);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-
-  <!-- Tags row -->
-  <rect x="40" y="276" width="70" height="24" rx="12" fill="#0F2A1A" style="fill:rgb(15, 42, 26);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="75" y="292" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#5DCAA5" style="fill:rgb(93, 202, 165);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:500;text-anchor:middle;dominant-baseline:auto">#AINews</text>
-
-  <rect x="120" y="276" width="82" height="24" rx="12" fill="#0B1E30" style="fill:rgb(11, 30, 48);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="161" y="292" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#85B7EB" style="fill:rgb(133, 183, 235);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:500;text-anchor:middle;dominant-baseline:auto">#TechToday</text>
-
-  <rect x="212" y="276" width="80" height="24" rx="12" fill="#1A1230" style="fill:rgb(26, 18, 48);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="252" y="292" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#AFA9EC" style="fill:rgb(175, 169, 236);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:500;text-anchor:middle;dominant-baseline:auto">#MachineLearning</text>
-
-  <!-- URL -->
-  <text x="40" y="332" font-family="system-ui, sans-serif" font-size="13" fill="#4A5670" style="fill:rgb(74, 86, 112);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:13px;font-weight:400;text-anchor:start;dominant-baseline:auto">techgram.netlify.app</text>
-
-  <!-- Right side visual — abstract AI node art -->
-  <circle cx="540" cy="185" r="48" fill="none" stroke="#185FA5" stroke-width="0.5" opacity="0.6" style="fill:none;stroke:rgb(24, 95, 165);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.6;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <circle cx="540" cy="185" r="30" fill="none" stroke="#378ADD" stroke-width="0.5" opacity="0.5" style="fill:none;stroke:rgb(55, 138, 221);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.5;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <circle cx="540" cy="185" r="12" fill="#185FA5" opacity="0.8" style="fill:rgb(24, 95, 165);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.8;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <circle cx="540" cy="185" r="6" fill="#85B7EB" style="fill:rgb(133, 183, 235);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-
-  <!-- Orbiting dots -->
-  <circle cx="540" cy="137" r="4" fill="#378ADD" opacity="0.9" style="fill:rgb(55, 138, 221);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.9;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <circle cx="588" cy="185" r="4" fill="#378ADD" opacity="0.9" style="fill:rgb(55, 138, 221);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.9;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <circle cx="540" cy="233" r="4" fill="#378ADD" opacity="0.9" style="fill:rgb(55, 138, 221);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.9;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <circle cx="492" cy="185" r="4" fill="#378ADD" opacity="0.9" style="fill:rgb(55, 138, 221);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.9;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-
-  <!-- Connector lines -->
-  <line x1="540" y1="141" x2="540" y2="173" stroke="#378ADD" stroke-width="0.5" opacity="0.5" style="fill:rgb(0, 0, 0);stroke:rgb(55, 138, 221);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.5;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <line x1="584" y1="185" x2="552" y2="185" stroke="#378ADD" stroke-width="0.5" opacity="0.5" style="fill:rgb(0, 0, 0);stroke:rgb(55, 138, 221);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.5;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <line x1="540" y1="229" x2="540" y2="197" stroke="#378ADD" stroke-width="0.5" opacity="0.5" style="fill:rgb(0, 0, 0);stroke:rgb(55, 138, 221);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.5;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <line x1="496" y1="185" x2="528" y2="185" stroke="#378ADD" stroke-width="0.5" opacity="0.5" style="fill:rgb(0, 0, 0);stroke:rgb(55, 138, 221);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.5;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-
-  <!-- Outer ring nodes -->
-  <circle cx="567" cy="148" r="3" fill="#5DCAA5" opacity="0.8" style="fill:rgb(93, 202, 165);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.8;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <circle cx="575" cy="210" r="3" fill="#5DCAA5" opacity="0.8" style="fill:rgb(93, 202, 165);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.8;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <circle cx="510" cy="216" r="3" fill="#AFA9EC" opacity="0.8" style="fill:rgb(175, 169, 236);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.8;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <circle cx="507" cy="155" r="3" fill="#AFA9EC" opacity="0.8" style="fill:rgb(175, 169, 236);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.8;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <line x1="540" y1="137" x2="567" y2="148" stroke="#1D9E75" stroke-width="0.5" opacity="0.4" style="fill:rgb(0, 0, 0);stroke:rgb(29, 158, 117);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.4;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <line x1="588" y1="185" x2="575" y2="210" stroke="#1D9E75" stroke-width="0.5" opacity="0.4" style="fill:rgb(0, 0, 0);stroke:rgb(29, 158, 117);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.4;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <line x1="540" y1="233" x2="510" y2="216" stroke="#7F77DD" stroke-width="0.5" opacity="0.4" style="fill:rgb(0, 0, 0);stroke:rgb(127, 119, 221);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.4;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <line x1="492" y1="185" x2="507" y2="155" stroke="#7F77DD" stroke-width="0.5" opacity="0.4" style="fill:rgb(0, 0, 0);stroke:rgb(127, 119, 221);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.4;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0A0E1A"/>
+  <line x1="0" y1="210" x2="1200" y2="210" stroke="#1E2540" stroke-width="0.5"/>
+  <line x1="0" y1="420" x2="1200" y2="420" stroke="#1E2540" stroke-width="0.5"/>
+  <line x1="400" y1="0" x2="400" y2="630" stroke="#1E2540" stroke-width="0.5"/>
+  <line x1="800" y1="0" x2="800" y2="630" stroke="#1E2540" stroke-width="0.5"/>
+  <circle cx="1100" cy="100" r="160" fill="#185FA5" opacity="0.18"/>
+  <circle cx="1100" cy="100" r="90" fill="#378ADD" opacity="0.12"/>
+  <circle cx="140" cy="530" r="140" fill="#0F6E56" opacity="0.18"/>
+  <circle cx="140" cy="530" r="70" fill="#1D9E75" opacity="0.12"/>
+  <rect x="70" y="66" width="160" height="44" rx="22" fill="#185FA5" opacity="0.9"/>
+  <text x="150" y="94" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="600" fill="#E6F1FB" letter-spacing="2">TECHGRAM</text>
+  <text x="70" y="240" font-family="system-ui, sans-serif" font-size="80" font-weight="700" fill="#F0F4FF" letter-spacing="-2">The Future of</text>
+  <text x="70" y="340" font-family="system-ui, sans-serif" font-size="80" font-weight="700" fill="#378ADD" letter-spacing="-2">AI News.</text>
+  <text x="70" y="410" font-family="system-ui, sans-serif" font-size="26" font-weight="400" fill="#8A9AB8">Breaking AI stories, deep dives &amp; daily tech intelligence.</text>
+  <line x1="70" y1="448" x2="560" y2="448" stroke="#1E2540" stroke-width="0.5"/>
+  <rect x="70" y="466" width="100" height="36" rx="18" fill="#0F2A1A"/>
+  <text x="120" y="489" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="500" fill="#5DCAA5">#AINews</text>
+  <rect x="182" y="466" width="120" height="36" rx="18" fill="#0B1E30"/>
+  <text x="242" y="489" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="500" fill="#85B7EB">#TechToday</text>
+  <rect x="314" y="466" width="160" height="36" rx="18" fill="#1A1230"/>
+  <text x="394" y="489" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="500" fill="#AFA9EC">#MachineLearning</text>
+  <text x="70" y="578" font-family="system-ui, sans-serif" font-size="18" fill="#4A5670">incandescent-basbousa-4872c0.netlify.app</text>
+  <circle cx="950" cy="320" r="84" fill="none" stroke="#185FA5" stroke-width="0.5" opacity="0.6"/>
+  <circle cx="950" cy="320" r="52" fill="none" stroke="#378ADD" stroke-width="0.5" opacity="0.5"/>
+  <circle cx="950" cy="320" r="20" fill="#185FA5" opacity="0.8"/>
+  <circle cx="950" cy="320" r="10" fill="#85B7EB"/>
+  <circle cx="950" cy="236" r="7" fill="#378ADD" opacity="0.9"/>
+  <circle cx="1034" cy="320" r="7" fill="#378ADD" opacity="0.9"/>
+  <circle cx="950" cy="404" r="7" fill="#378ADD" opacity="0.9"/>
+  <circle cx="866" cy="320" r="7" fill="#378ADD" opacity="0.9"/>
+  <line x1="950" y1="243" x2="950" y2="300" stroke="#378ADD" stroke-width="0.5" opacity="0.5"/>
+  <line x1="1027" y1="320" x2="970" y2="320" stroke="#378ADD" stroke-width="0.5" opacity="0.5"/>
+  <line x1="950" y1="397" x2="950" y2="340" stroke="#378ADD" stroke-width="0.5" opacity="0.5"/>
+  <line x1="873" y1="320" x2="930" y2="320" stroke="#378ADD" stroke-width="0.5" opacity="0.5"/>
+  <circle cx="997" cy="258" r="5" fill="#5DCAA5" opacity="0.8"/>
+  <circle cx="1010" cy="368" r="5" fill="#5DCAA5" opacity="0.8"/>
+  <circle cx="895" cy="378" r="5" fill="#AFA9EC" opacity="0.8"/>
+  <circle cx="890" cy="264" r="5" fill="#AFA9EC" opacity="0.8"/>
 </svg>

@@ -11,13 +11,19 @@ export const metadata: Metadata = {
     url: "https://incandescent-basbousa-4872c0.netlify.app",
     siteName: "Techgram",
     images: [
-      {
-        url: "https://incandescent-basbousa-4872c0.netlify.app/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Techgram — Tech Intelligence Feed",
-      },
-    ],
+  {
+    url: "https://incandescent-basbousa-4872c0.netlify.app/og-image.png",
+    width: 1200,
+    height: 630,
+    alt: "Techgram — Tech Intelligence Feed",
+  },
+  {
+    url: "https://incandescent-basbousa-4872c0.netlify.app/og-image-square.png",
+    width: 1080,
+    height: 1080,
+    alt: "Techgram — Tech Intelligence Feed",
+  },
+],
     type: "website",
   },
   twitter: {
