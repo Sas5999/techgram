@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Techgram — Tech Intelligence Feed",
     description: "Swipe through curated tech news, AI insights, funding rounds, and market disruptions in seconds.",
-    url: "https://techgram.netlify.app",
+    url: "https://incandescent-basbousa-4872c0.netlify.app",
     siteName: "Techgram",
     images: [
       {
-        url: "https://techgram.netlify.app/og-image.png",
+        url: "https://incandescent-basbousa-4872c0.netlify.app/og-image.png",
         width: 1200,
         height: 630,
         alt: "Techgram — Tech Intelligence Feed",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Techgram — Tech Intelligence Feed",
     description: "Swipe through curated tech news, AI insights, funding rounds, and market disruptions in seconds.",
-    images: ["https://techgram.netlify.app/og-image.png"],
+    images: ["https://incandescent-basbousa-4872c0.netlify.app/og-image.png"],
   },
 };
 
