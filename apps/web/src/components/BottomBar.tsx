@@ -47,7 +47,7 @@ export default function BottomBar({ onTabChange, currentTab }: BottomBarProps) {
   const activeIndex = tabs.findIndex((t) => t.active);
 
   return (
-    <nav className="md:hidden fixed bottom-0 left-0 right-0 h-[78px] border-t border-white/10 glass-panel flex items-end justify-around px-3 pb-3 z-40 select-none">
+    <nav className="md:hidden !fixed bottom-0 left-0 right-0 h-[78px] border-t border-white/10 glass-panel flex items-end justify-around px-3 pb-3 z-40 select-none">
       {/* Sliding indicator */}
       <motion.div
         className="absolute top-0 h-[3px] bg-gradient-to-r from-accent-purple to-accent-blue rounded-full"

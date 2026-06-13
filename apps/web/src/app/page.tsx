@@ -85,7 +85,7 @@ export default function Home() {
         <div className="flex flex-1 overflow-hidden relative">
           <Sidebar onTabChange={setActiveTab} currentTab={activeTab} />
 
-          <main className="flex-1 flex flex-col relative items-center justify-center p-4 pb-20 md:pb-6 overflow-hidden">
+          <main className="flex-1 w-full flex flex-col relative items-center justify-center p-4 pb-20 md:pb-6 overflow-hidden">
             <AnimatePresence mode="wait">
               {activeTab === 'feed' && (
                 <motion.div

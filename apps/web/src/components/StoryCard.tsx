@@ -158,13 +158,7 @@ export default function StoryCard({ story, direction = 'up', onSwipeUp, onSwipeD
         {/* Row 1: source + credibility badge */}
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-2.5 min-w-0">
-            <div className="w-9 h-9 sm:w-11 sm:h-11 shrink-0 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden">
-              <img
-                src={story.sourceLogoUrl} alt={story.sourceName}
-                className="w-5 h-5 sm:w-6 sm:h-6 object-contain"
-                onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-              />
-            </div>
+
             <div className="min-w-0">
               <p className="text-[13px] sm:text-sm font-semibold text-white truncate">{story.sourceName}</p>
               <div className="flex items-center gap-1.5 text-[10px] sm:text-[11px] text-gray-400">
@@ -204,7 +198,7 @@ export default function StoryCard({ story, direction = 'up', onSwipeUp, onSwipeD
         </div>
 
         {/* Headline */}
-        <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-white leading-tight line-clamp-3">
+        <h2 className="text-lg sm:text-xl lg:text-2xl font-bold tracking-tight text-white leading-tight line-clamp-3">
           {story.headline}
         </h2>
 
@@ -271,7 +265,7 @@ export default function StoryCard({ story, direction = 'up', onSwipeUp, onSwipeD
         </div>
 
         {/* Impact scores */}
-        <div className="grid grid-cols-5 gap-1.5 sm:gap-3 bg-white/4 border border-white/8 rounded-2xl p-2.5 sm:p-3.5">
+        <div className="grid grid-cols-5 gap-1 sm:gap-2 bg-white/4 border border-white/8 rounded-2xl p-1.5 sm:p-2">
           <RadialScore score={story.aiImpactScore}       label="AI"     colorClass="text-accent-purple" />
           <RadialScore score={story.marketImpactScore}   label="Market" colorClass="text-accent-blue" />
           <RadialScore score={story.innovationScore}     label="Innov"  colorClass="text-accent-emerald" />
@@ -281,7 +275,7 @@ export default function StoryCard({ story, direction = 'up', onSwipeUp, onSwipeD
       </div>
 
       {/* ── Action bar ── */}
-      <div className="px-4 sm:px-5 py-3 sm:py-4 border-t border-white/10 bg-black/55 flex items-center justify-between gap-3 relative z-10">
+      <div className="px-4 sm:px-5 py-2 sm:py-2.5 border-t border-white/10 bg-black/55 flex items-center justify-between gap-3 relative z-10">
         <a
           href={story.originalUrl}
           target="_blank"
